@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export const useLocalstorage= (key, initialState= '') => {
+export const useLocalStorage= (key, initialState= '') => {
   // set up state property
   // if local data does not have that, else use initial data
   // capture the values of the input
@@ -8,6 +8,11 @@ export const useLocalstorage= (key, initialState= '') => {
   // Don't forget to parse data from localStorage, and stringify new data          getting stored
 
     const [storedValue, setStoredValue]= useState(() =>{
+
+        // also could have done:
+        // const item = window.localStorage.getItem(key);
+        // return item ? JSON.parse(item) : initialValue;
+
         if(JSON.parse(window.localStorage.getItem(key))){
             return JSON.parse(window.localStorage.getItem(key));
         } else{
